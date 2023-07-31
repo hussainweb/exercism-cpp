@@ -19,17 +19,31 @@ namespace bob {
         return rtrim(ltrim(s));
     }
 
+    std::string upper(const std::string &s) {
+        std::string result;
+        result.resize(s.length());
+        for (size_t i = 0; i < s.length(); i++) {
+            result[i] = ::toupper(s[i]);
+        }
+        return result;
+    }
+
+    std::string lower(const std::string &s) {
+        std::string result;
+        result.resize(s.length());
+        for (size_t i = 0; i < s.length(); i++) {
+            result[i] = ::tolower(s[i]);
+        }
+        return result;
+    }
+
     std::string hey(std::string message) {
         std::string s = trim(message);
-        std::string upper;
-        std::string lower;
+        std::string upper_s = upper(s);
+        std::string lower_s = lower(s);
 
         bool question = s.find('?') == s.length() - 1;
-        upper.resize(s.length());
-        std::transform(s.begin(), s.end(), upper.begin(), std::toupper);
-        lower.resize(s.length());
-        std::transform(s.begin(), s.end(), lower.begin(), std::tolower);
-        bool yelling = (s == upper) && (s != lower);
+        bool yelling = (s == upper_s) && (s != lower_s);
 
         if (question && yelling) {
             return "Calm down, I know what I'm doing!";
