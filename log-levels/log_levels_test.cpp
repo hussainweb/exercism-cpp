@@ -16,7 +16,6 @@ TEST_CASE("Error message")
     REQUIRE(expected == actual);
 }
 
-#if defined(EXERCISM_RUN_ALL_TESTS)
 TEST_CASE("Warning message")
 {
     const string actual = log_line::message("[WARNING]: Disk almost full");
@@ -88,4 +87,3 @@ TEST_CASE("Info reformat")
 
     REQUIRE(actual == expected);
 }
-#endif
